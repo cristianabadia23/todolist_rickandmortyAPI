@@ -59,5 +59,22 @@ dependencies {
     implementation libs.kotlinx.coroutines.core
     kapt libs.androidx.room.compiler
 
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.androidx.core.testing
+    testImplementation libs.mockk
+    testImplementation libs.turbine
+
+    androidTestImplementation libs.androidx.espresso.core.v351
+    androidTestImplementation libs.androidx.espresso.intents
+    androidTestImplementation libs.androidx.espresso.contrib
+    androidTestImplementation libs.androidx.rules
+    androidTestImplementation libs.androidx.runner
+    androidTestImplementation libs.mockito.android
+    androidTestImplementation libs.mockito.kotlin
+    testImplementation libs.kotlinx.coroutines.test
+    testImplementation libs.mockito.inline
+    testImplementation "androidx.arch.core:core-testing:2.2.0"
+
+
 
 }
