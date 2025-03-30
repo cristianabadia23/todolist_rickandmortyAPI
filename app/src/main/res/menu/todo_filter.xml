@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_filter"
+        android:title="Filtrar"
+        android:icon="@drawable/ic_more_vert"
+        app:showAsAction="always">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/filter_all"
+                    android:title="Todas"
+                    android:checked="true"/>
+                <item
+                    android:id="@+id/filter_in_progress"
+                    android:title="En progreso"/>
+                <item
+                    android:id="@+id/filter_completed"
+                    android:title="Completadas"/>
+                <item
+                    android:id="@+id/filter_deleted"
+                    android:title="Eliminadas"/>
+            </group>
+        </menu>
+    </item>
+
+</menu>

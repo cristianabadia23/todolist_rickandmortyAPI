@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.todo.TodoFragment">
 
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/design_default_color_secondary"
+        app:menu="@menu/todo_filter"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/todoRecyclerView"

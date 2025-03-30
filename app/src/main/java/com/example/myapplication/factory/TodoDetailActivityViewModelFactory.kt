@@ -3,7 +3,7 @@ package com.example.myapplication.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.persistence.repository.TodoRepository
-import com.example.myapplication.ui.todo.TodoDetailActivityViewModel
+import com.example.myapplication.ui.todo.*
 
 
 class TodoDetailActivityViewModelFactory(

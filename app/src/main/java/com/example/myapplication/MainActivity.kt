@@ -23,11 +23,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var database: TodoDatabase
     lateinit var repository: TodoRepository
     lateinit var todoFragmentViewModel: TodoFragmentViewModel
-    lateinit var todoDetailActivityViewModel: TodoDetailActivityViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
 
         database = TodoDatabase.getDatabase(this)
         repository = TodoRepository(database.todoTaskDao())
