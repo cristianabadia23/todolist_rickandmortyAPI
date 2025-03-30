@@ -9,12 +9,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
-import com.example.myapplication.factory.TodoDetailActivityViewModelFactory
+import com.example.myapplication.factory.RickAndMortyViewModelFactory
 import com.example.myapplication.factory.TodoViewModelFactory
 import com.example.myapplication.persistence.repository.TodoRepository
+import com.example.myapplication.persistence.room.RickAndMortyBase
 import com.example.myapplication.persistence.room.TodoDatabase
+import com.example.myapplication.ui.RickAndMorty.RickAndMortyViewModel
 import com.example.myapplication.ui.todo.TodoDetailActivity
-import com.example.myapplication.ui.todo.TodoDetailActivityViewModel
 import com.example.myapplication.ui.todo.TodoFragmentViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var database: TodoDatabase
     lateinit var repository: TodoRepository
     lateinit var todoFragmentViewModel: TodoFragmentViewModel
-    lateinit var todoDetailActivityViewModel: TodoDetailActivityViewModel
+    lateinit var rickDatabase: RickAndMortyBase
+    lateinit var rickAndMortyViewModel: RickAndMortyViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         todoFragmentViewModel = ViewModelProvider(this, factorytodoViewModel)[TodoFragmentViewModel
         ::class.java]
 
+
+        rickDatabase = RickAndMortyBase.getDatabase(this)
+        val factoryRickAndMorty = RickAndMortyViewModelFactory(rickDatabase)
+        rickAndMortyViewModel = ViewModelProvider(this, factoryRickAndMorty)[RickAndMortyViewModel
+        ::class.java]
 
 
         binding = ActivityMainBinding.inflate(layoutInflater)

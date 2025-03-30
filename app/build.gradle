@@ -59,6 +59,13 @@ dependencies {
     implementation libs.kotlinx.coroutines.core
     kapt libs.androidx.room.compiler
 
+    implementation libs.retrofit2.retrofit
+    implementation libs.glide
+
+
+
+    implementation libs.converter.gson
+
     testImplementation libs.kotlinx.coroutines.test
     testImplementation libs.androidx.core.testing
     testImplementation libs.mockk
