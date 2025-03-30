@@ -5,6 +5,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.myapplication.constants.BBDDNames
 import com.example.myapplication.persistence.dao.TodoDao
 
 @Database(entities = [TodoModel::class], version = 1, exportSchema = false)
@@ -20,7 +21,7 @@ abstract class TodoDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context!!.applicationContext,
                     TodoDatabase::class.java,
-                    "todo_database"
+                    BBDDNames.TODO_DB.name
                 ).build()
                 INSTANCE = instance
                 instance

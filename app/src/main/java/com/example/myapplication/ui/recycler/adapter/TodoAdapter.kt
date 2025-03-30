@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.ListAdapter
 import com.example.myapplication.R
+import com.example.myapplication.constants.TaskState
 import com.example.myapplication.persistence.models.TodoModel
 import com.example.myapplication.ui.recycler.holder.TodoViewHolder
 import com.example.myapplication.ui.todo.TodoDetailActivity
@@ -47,7 +48,7 @@ class TodoAdapter(private val viewModel: TodoFragmentViewModel, private val cont
             .setTitle("Eliminar tarea")
             .setMessage("¿Desea eliminar esta tarea?")
             .setPositiveButton("Sí") { _, _ ->
-                val updatedTask = task.copy(state = "Eliminada")
+                val updatedTask = task.copy(state = TaskState.DELETED.name)
                 viewModel.updateTask(updatedTask)
                 holder.markAsDeleted()
                 Toast.makeText(context, "Tarea eliminada", Toast.LENGTH_SHORT).show()

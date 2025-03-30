@@ -40,8 +40,6 @@ class TodoFragment : Fragment() {
         lifecycleScope.launch {
             todoFragmentViewModel.allTasks.collectLatest { tasks ->
                 adapter?.submitList(tasks)
-                val taskSize = tasks.size
-
             }
         }
 

@@ -17,15 +17,4 @@ class TodoFragmentViewModel(private val repository: TodoRepository) : ViewModel(
         }
     }
 
-    fun deleteTask(task: TodoModel) {
-        viewModelScope.launch {
-            repository.delete(task)
-        }
-    }
-
-    fun getTaskById(id: Int, callback: (TodoModel?) -> Unit) {
-        viewModelScope.launch {
-            callback(repository.getTaskById(id))
-        }
-    }
 }

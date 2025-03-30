@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
+import com.example.myapplication.constants.TaskState
 import com.example.myapplication.persistence.models.TodoModel
 
 class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,15 +21,15 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         descriptionTextView.text = task.description
         updateStateUI(task.state)
 
-        statusCheckBox.isChecked = task.state == "done"
+        statusCheckBox.isChecked = task.state == TaskState.COMPLETED.name
 
         statusCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            val newState = if (isChecked) "done" else "in progress"
+            val newState = if (isChecked) TaskState.COMPLETED.name else TaskState.IN_PROGRESS.name
             updateStateUI(newState)
             onStatusChanged(task.copy(state = newState))
         }
 
-        if (task.state == "Eliminada") {
+        if (task.state == TaskState.DELETED.name) {
             markAsDeleted()
             statusCheckBox.isEnabled = false
         } else {
@@ -39,16 +40,16 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     private fun updateStateUI(state: String) {
         stateTextView.text = when(state) {
-            "in progress" -> "En progreso"
-            "done" -> "Completada"
-            "remove" -> "Eliminada"
+            TaskState.IN_PROGRESS.name -> "En progreso"
+            TaskState.COMPLETED.name -> "Completada"
+            TaskState.DELETED.name -> "Eliminada"
             else -> state
         }
 
         val color = when(state) {
-            "in progress" -> ContextCompat.getColor(itemView.context, R.color.orange)
-            "done" -> ContextCompat.getColor(itemView.context, R.color.green)
-            "remove" -> ContextCompat.getColor(itemView.context, R.color.red)
+            TaskState.IN_PROGRESS.name -> ContextCompat.getColor(itemView.context, R.color.orange)
+            TaskState.COMPLETED.name -> ContextCompat.getColor(itemView.context, R.color.green)
+            TaskState.DELETED.name -> ContextCompat.getColor(itemView.context, R.color.red)
             else -> ContextCompat.getColor(itemView.context, R.color.teal_700)
         }
         stateTextView.setTextColor(color)
@@ -58,7 +59,7 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         titleTextView.paintFlags = titleTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         descriptionTextView.paintFlags = descriptionTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         stateTextView.paintFlags = stateTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        updateStateUI("Eliminada")
+        updateStateUI(TaskState.DELETED.name)
     }
 
     private fun resetTextAppearance() {
