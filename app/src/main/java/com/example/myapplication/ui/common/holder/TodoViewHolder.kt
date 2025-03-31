@@ -6,23 +6,15 @@ import android.widget.CheckBox
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.example.myapplication.R
 import com.example.myapplication.data.local.models.TodoModel
 import com.example.myapplication.utils.TaskState
-import java.util.Timer
-import kotlin.concurrent.schedule
 
 class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val titleTextView: TextView = itemView.findViewById(R.id.titleText)
     private val descriptionTextView: TextView = itemView.findViewById(R.id.descriptionText)
     private val stateTextView: TextView = itemView.findViewById(R.id.stateText)
     private val statusCheckBox: CheckBox = itemView.findViewById(R.id.checkBox)
-    private val lottieAnimationView: LottieAnimationView = itemView.findViewById(R.id.lottieAnimationView)
-
-    init {
-        lottieAnimationView.visibility = View.GONE // Ocultar inicialmente
-    }
 
     fun bind(task: TodoModel, onStatusChanged: (TodoModel) -> Unit) {
         titleTextView.text = task.title
@@ -32,13 +24,14 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         statusCheckBox.isChecked = task.state == TaskState.COMPLETED.name
 
         statusCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            val newState = if (isChecked) TaskState.COMPLETED.name else TaskState.IN_PROGRESS.name
+            val newState = if (isChecked) {
+                TaskState.COMPLETED.name
+            } else {
+                TaskState.IN_PROGRESS.name
+            }
+
             updateStateUI(newState)
             onStatusChanged(task.copy(state = newState))
-
-            if (isChecked) {
-                showLottieAnimation()
-            }
         }
 
         if (task.state == TaskState.DELETED.name) {
@@ -47,20 +40,6 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         } else {
             resetTextAppearance()
             statusCheckBox.isEnabled = true
-        }
-    }
-
-    private fun showLottieAnimation() {
-        lottieAnimationView.apply {
-            visibility = View.VISIBLE
-            playAnimation()
-
-            Timer().schedule(5000) {
-                itemView.post {
-                    visibility = View.GONE
-                    cancelAnimation()
-                }
-            }
         }
     }
 

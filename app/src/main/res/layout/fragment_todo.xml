@@ -17,7 +17,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- FAB principal en esquina inferior derecha -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/mainFab"
         android:layout_width="wrap_content"
@@ -28,7 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- FABs secundarios apilados verticalmente encima del principal -->
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab1"
             android:layout_width="wrap_content"
