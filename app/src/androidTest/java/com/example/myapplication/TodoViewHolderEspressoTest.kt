@@ -8,7 +8,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.myapplication.persistence.models.TodoModel
+import com.example.myapplication.data.local.models.TodoModel
 import com.example.myapplication.ui.common.holder.TodoViewHolder
 import com.example.myapplication.ui.feactures.MainActivity
 import org.junit.Before

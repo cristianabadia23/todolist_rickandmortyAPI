@@ -1,6 +1,6 @@
 package com.example.myapplication
 
-import com.example.myapplication.persistence.models.RickAndMorty
+import com.example.myapplication.data.local.models.RickAndMorty
 import com.example.myapplication.ui.common.diff.RickAndMortyDiffCallback
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

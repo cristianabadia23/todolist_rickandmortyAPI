@@ -16,8 +16,6 @@ import com.example.myapplication.ui.feactures.MainActivity
 import com.example.myapplication.ui.feactures.factory.TodoViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlin.math.cos
-import kotlin.math.sin
 
 class TodoFragment : Fragment() {
     private var _binding: FragmentTodoBinding? = null
