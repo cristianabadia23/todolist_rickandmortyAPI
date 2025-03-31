@@ -2,9 +2,9 @@ package com.example.myapplication
 
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
-import com.example.myapplication.persistence.dao.TodoDao
+import com.example.myapplication.local.dao.TodoDao
 import com.example.myapplication.persistence.models.TodoModel
-import com.example.myapplication.persistence.room.TodoDatabase
+import com.example.myapplication.local.room.TodoDatabase
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.After
