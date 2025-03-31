@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.persistence.models.RickAndMorty
-import com.example.myapplication.ui.RickAndMorty.RickAndMortyViewModel
 import com.example.myapplication.ui.recycler.diff.RickAndMortyDiffCallback
 import com.example.myapplication.ui.recycler.holder.RickAndMortyViewHolder
+import com.example.myapplication.ui.rickAndMorty.RickAndMortyViewModel
 
 class RickAndMortyAdapter(private var characters: List<RickAndMorty>, private val viewModel: RickAndMortyViewModel) : RecyclerView.Adapter<RickAndMortyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RickAndMortyViewHolder {

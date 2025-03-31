@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.myapplication.ui.RickAndMorty.RickAndMortyFragment"
+        android:name="com.example.myapplication.ui.rickAndMorty.RickAndMortyFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_rickandmorty" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.myapplication.ui.notifications.NotificationsFragment"
+        android:name="com.example.myapplication.ui.rickandmortyfav.RickAndMortyFAVFragment"
         android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_rickandmortyfav" />
 </navigation>

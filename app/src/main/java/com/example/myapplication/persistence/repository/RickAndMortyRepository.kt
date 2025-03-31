@@ -29,4 +29,7 @@ class RickAndMortyRepository(private val rickAndMortyDAO: RickAndMortyDAO) {
     suspend fun deleteAllCharacters() {
         rickAndMortyDAO.deleteAllCharacters()
     }
+
+    fun getFavoriteCharacters() = rickAndMortyDAO.getFavoriteCharacters()
+
 }

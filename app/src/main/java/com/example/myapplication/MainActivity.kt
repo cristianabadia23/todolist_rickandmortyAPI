@@ -9,12 +9,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.myapplication.databinding.ActivityMainBinding
+import com.example.myapplication.factory.RickAndMortyFAVViewModelFactory
 import com.example.myapplication.factory.RickAndMortyViewModelFactory
 import com.example.myapplication.factory.TodoViewModelFactory
+import com.example.myapplication.persistence.repository.RickAndMortyRepository
 import com.example.myapplication.persistence.repository.TodoRepository
 import com.example.myapplication.persistence.room.RickAndMortyBase
 import com.example.myapplication.persistence.room.TodoDatabase
-import com.example.myapplication.ui.RickAndMorty.RickAndMortyViewModel
+import com.example.myapplication.ui.rickAndMorty.RickAndMortyViewModel
+import com.example.myapplication.ui.rickandmortyfav.RickAndMortyFAVViewModel
 import com.example.myapplication.ui.todo.TodoDetailActivity
 import com.example.myapplication.ui.todo.TodoFragmentViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +30,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var rickDatabase: RickAndMortyBase
     lateinit var rickAndMortyViewModel: RickAndMortyViewModel
     private lateinit var binding: ActivityMainBinding
-
+    private lateinit var rickAndMortyFAVViewModel:RickAndMortyFAVViewModel
+    lateinit var rickAndMortyRepository: RickAndMortyRepository
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,10 +44,14 @@ class MainActivity : AppCompatActivity() {
 
 
         rickDatabase = RickAndMortyBase.getDatabase(this)
-        val factoryRickAndMorty = RickAndMortyViewModelFactory(rickDatabase)
+        rickAndMortyRepository = RickAndMortyRepository(rickDatabase.rickAndMortyDAO())
+        val factoryRickAndMorty = RickAndMortyViewModelFactory(rickAndMortyRepository)
         rickAndMortyViewModel = ViewModelProvider(this, factoryRickAndMorty)[RickAndMortyViewModel
         ::class.java]
 
+        val rickAndMortyFAVViewModelFactory = RickAndMortyFAVViewModelFactory(rickAndMortyRepository)
+        rickAndMortyFAVViewModel = ViewModelProvider(this, rickAndMortyFAVViewModelFactory)[RickAndMortyFAVViewModel
+        ::class.java]
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

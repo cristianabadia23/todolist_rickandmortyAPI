@@ -6,14 +6,14 @@
     android:padding="10dp"
     android:gravity="center">
 
-    <!-- Imagen del personaje -->
     <ImageView
         android:id="@+id/character_image"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:src="@drawable/ic_launcher_foreground"
-        android:contentDescription=""/>
+        android:contentDescription="Character Image"
+        android:background="@drawable/rounded_background"/>
 
     <TextView
         android:id="@+id/character_name"
@@ -43,12 +43,14 @@
         android:gravity="center"
         android:layout_marginTop="4dp"/>
 
-    <Button
+    <ImageButton
         android:id="@+id/button_favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Favorite"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@drawable/rounded_button"
+        android:src="@drawable/baseline_favorite_border_24"
+        />
 
 </LinearLayout>

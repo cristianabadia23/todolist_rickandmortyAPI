@@ -33,4 +33,7 @@ interface RickAndMortyDAO {
 
     @Query("DELETE FROM RickAndMortyEntity")
     suspend fun deleteAllCharacters()
+
+    @Query("SELECT * FROM RickAndMortyEntity WHERE isFavorite = 1")
+    fun getFavoriteCharacters(): LiveData<List<RickAndMortyEntity>>
 }

@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.RickAndMorty
+package com.example.myapplication.ui.rickAndMorty
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,12 +8,11 @@ import com.example.myapplication.api.RickAndMortyApi
 import com.example.myapplication.persistence.models.RickAndMorty
 import com.example.myapplication.persistence.models.RickAndMortyEntity
 import com.example.myapplication.persistence.repository.RickAndMortyRepository
-import com.example.myapplication.persistence.room.RickAndMortyBase
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RickAndMortyViewModel(private val db: RickAndMortyBase) : ViewModel() {
+class RickAndMortyViewModel(private val repository: RickAndMortyRepository) : ViewModel() {
     private val _characters = MutableLiveData<List<RickAndMorty>>()
     val characters: LiveData<List<RickAndMorty>> get() = _characters
     private var currentPage = 1
@@ -29,7 +28,7 @@ class RickAndMortyViewModel(private val db: RickAndMortyBase) : ViewModel() {
         if (isLoading) return
         isLoading = true
         viewModelScope.launch {
-            val cachedCharacters = db.rickAndMortyDAO().getAllCharacters().value
+            val cachedCharacters = repository.allCharacters.value
             if (cachedCharacters != null && cachedCharacters.isNotEmpty() && currentPage == 1) {
                 _characters.value = cachedCharacters.map { entity ->
                     RickAndMorty(entity.id, entity.name, entity.image, entity.species, entity.status, entity.isFavorite)
@@ -39,7 +38,7 @@ class RickAndMortyViewModel(private val db: RickAndMortyBase) : ViewModel() {
                     val response = retrofit.getCharacters(currentPage)
                     val newCharacters = response.results
                     _characters.value = (_characters.value ?: emptyList()) + newCharacters
-                    db.rickAndMortyDAO().insertAllCharacters(newCharacters.map { char ->
+                    repository.insertAllCharacters(newCharacters.map { char ->
                         RickAndMortyEntity(char.id, char.name, char.image, char.species, char.status, char.isFavorite)
                     })
                     currentPage++
@@ -56,7 +55,7 @@ class RickAndMortyViewModel(private val db: RickAndMortyBase) : ViewModel() {
         character.isFavorite = !character.isFavorite
         viewModelScope.launch {
             val updatedEntity = RickAndMortyEntity(character.id, character.name, character.image, character.species, character.status, character.isFavorite)
-            db.rickAndMortyDAO().updateCharacter(updatedEntity)
+            repository.updateCharacter(updatedEntity)
             _characters.value = _characters.value?.map {
                 if (it.id == character.id) character else it
             }

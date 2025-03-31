@@ -1,4 +1,4 @@
-package com.example.myapplication.ui.RickAndMorty
+package com.example.myapplication.ui.rickAndMorty
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -28,7 +28,7 @@ class RickAndMortyFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
          val rickAndMortyViewModel: RickAndMortyViewModel by activityViewModels {
-            RickAndMortyViewModelFactory((requireActivity() as MainActivity).rickDatabase)
+            RickAndMortyViewModelFactory((requireActivity() as MainActivity).rickAndMortyRepository)
         }
 
         _binding = FragmentRickandmortyBinding.inflate(inflater, container, false)
