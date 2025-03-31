@@ -1,56 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:padding="10dp"
     android:gravity="center">
 
-    <ImageView
-        android:id="@+id/character_image"
+    <!-- Layout original intacto -->
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/character_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_launcher_foreground"
+            android:contentDescription="Character Image"
+            android:background="@drawable/rounded_background"/>
+
+        <TextView
+            android:id="@+id/character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rick Sanchez"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/character_species"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Species: Human"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/character_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: Alive"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginTop="4dp"/>
+
+        <ImageButton
+            android:id="@+id/button_favorite"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
+            android:src="@drawable/baseline_favorite_border_24"/>
+    </LinearLayout>
+
+    <!-- Añadimos Lottie SUPERPUESTO (no reemplaza nada) -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/character_animation"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_launcher_foreground"
-        android:contentDescription="Character Image"
-        android:background="@drawable/rounded_background"/>
-
-    <TextView
-        android:id="@+id/character_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rick Sanchez"
-        android:textSize="16sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/character_species"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Species: Human"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginTop="4dp"/>
-
-    <TextView
-        android:id="@+id/character_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Status: Alive"
-        android:textSize="14sp"
-        android:gravity="center"
-        android:layout_marginTop="4dp"/>
-
-    <ImageButton
-        android:id="@+id/button_favorite"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
-        android:layout_gravity="center"
-        android:background="@drawable/rounded_button"
-        android:src="@drawable/baseline_favorite_border_24"
-        />
-
-</LinearLayout>
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"/>
+</RelativeLayout>

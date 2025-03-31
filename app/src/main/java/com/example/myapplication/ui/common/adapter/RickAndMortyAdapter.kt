@@ -10,9 +10,14 @@ import com.example.myapplication.ui.common.diff.RickAndMortyDiffCallback
 import com.example.myapplication.ui.common.holder.RickAndMortyViewHolder
 import com.example.myapplication.ui.feactures.rickAndMorty.RickAndMortyViewModel
 
-class RickAndMortyAdapter(private var characters: List<RickAndMorty>, private val viewModel: RickAndMortyViewModel) : RecyclerView.Adapter<RickAndMortyViewHolder>() {
+class RickAndMortyAdapter(
+    private var characters: List<RickAndMorty>,
+    private val viewModel: RickAndMortyViewModel
+) : RecyclerView.Adapter<RickAndMortyViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RickAndMortyViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.rick_morty_holder_layout, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.rick_morty_holder_layout, parent, false)
         return RickAndMortyViewHolder(view, viewModel)
     }
 
