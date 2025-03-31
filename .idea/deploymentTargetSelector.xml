@@ -13,19 +13,19 @@
         </DropdownSelection>
         <DialogSelection />
       </SelectionState>
-      <SelectionState runConfigName="getTaskById_shouldReturnCorrectTask()">
+      <SelectionState runConfigName="RickAndMortyRepositoryTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="updateTask_shouldUpdateTask()">
+      <SelectionState runConfigName="RickAndMortyAdapterTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TodoDaoTest">
+      <SelectionState runConfigName="updateList updates data and notifies changes()">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TodoAdapterTest">
+      <SelectionState runConfigName="RickAndMortyFAVHolderTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="TodoViewHolderEspressoTest">
+      <SelectionState runConfigName="RickAndMortyApiTest">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
