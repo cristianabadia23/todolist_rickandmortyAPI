@@ -1,6 +1,7 @@
 # todolist_rickandmortyAPI
 Project Todo List app  + Rick and Morty API
 
+*- nota la app viene sin tareas, hay que crearlas a mano
 
 ## Índice
 1. [Diseño UI/UX](#diseño-uiux)
