@@ -6,20 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="12dp">
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="16dp"
-        android:elevation="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/complete" />
-
+    
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"

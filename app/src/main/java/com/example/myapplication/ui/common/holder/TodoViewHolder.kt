@@ -17,6 +17,9 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val statusCheckBox: CheckBox = itemView.findViewById(R.id.checkBox)
 
     fun bind(task: TodoModel, onStatusChanged: (TodoModel) -> Unit) {
+        resetTextAppearance()
+        statusCheckBox.isEnabled = true
+
         titleTextView.text = task.title
         descriptionTextView.text = task.description
         updateStateUI(task.state)
@@ -24,12 +27,7 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         statusCheckBox.isChecked = task.state == TaskState.COMPLETED.name
 
         statusCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            val newState = if (isChecked) {
-                TaskState.COMPLETED.name
-            } else {
-                TaskState.IN_PROGRESS.name
-            }
-
+            val newState = if (isChecked) TaskState.COMPLETED.name else TaskState.IN_PROGRESS.name
             updateStateUI(newState)
             onStatusChanged(task.copy(state = newState))
         }
@@ -37,9 +35,6 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         if (task.state == TaskState.DELETED.name) {
             markAsDeleted()
             statusCheckBox.isEnabled = false
-        } else {
-            resetTextAppearance()
-            statusCheckBox.isEnabled = true
         }
     }
 
@@ -50,7 +45,6 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             TaskState.DELETED.name -> "Eliminada"
             else -> state
         }
-
         val color = when(state) {
             TaskState.IN_PROGRESS.name -> ContextCompat.getColor(itemView.context, R.color.orange)
             TaskState.COMPLETED.name -> ContextCompat.getColor(itemView.context, R.color.green)
@@ -64,7 +58,6 @@ class TodoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         titleTextView.paintFlags = titleTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         descriptionTextView.paintFlags = descriptionTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         stateTextView.paintFlags = stateTextView.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-        updateStateUI(TaskState.DELETED.name)
     }
 
     private fun resetTextAppearance() {
