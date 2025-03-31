@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.myapplication.R
 import com.example.myapplication.ui.feactures.MainActivity
 import com.example.myapplication.databinding.FragmentRickandmortyBinding
 import com.example.myapplication.ui.feactures.factory.RickAndMortyViewModelFactory
 import com.example.myapplication.ui.common.adapter.RickAndMortyFavAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.getValue
 
 class RickAndMortyFAVFragment : Fragment() {
@@ -29,6 +31,10 @@ class RickAndMortyFAVFragment : Fragment() {
 
         _binding = FragmentRickandmortyBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val mainActivity = activity as? MainActivity
+        mainActivity?.findViewById<FloatingActionButton>(R.id.floatingActionButton)?.visibility =
+            View.GONE
 
         val recyclerView = binding.rvRickAndMorty
         recyclerView.layoutManager = GridLayoutManager(requireContext(),4)

@@ -94,6 +94,9 @@ class TodoDetailActivity : AppCompatActivity() {
         binding.saveBotton.setOnClickListener {
             saveTask(null)
         }
+        binding.deletebotton.setOnClickListener {
+            finish()
+        }
     }
 
     private fun saveTask(id: Int?) {
