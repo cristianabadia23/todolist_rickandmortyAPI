@@ -24,7 +24,7 @@ class TodoDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFormTodoBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        title= "Crear tarea"
         lottieAnimationView = binding.lottieAnimationView
 
         val database = TodoDatabase.getDatabase(this)
@@ -55,6 +55,7 @@ class TodoDetailActivity : AppCompatActivity() {
     }
 
     private fun loadExistingTask(todoId: Int) {
+        title= "Editar tarea"
         viewModel.getTaskById(todoId) { todoModel ->
             todoModel?.let {
                 binding.titleEditText.setText(it.title)

@@ -32,10 +32,6 @@ class RickAndMortyFAVFragment : Fragment() {
         _binding = FragmentRickandmortyBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val mainActivity = activity as? MainActivity
-        mainActivity?.findViewById<FloatingActionButton>(R.id.floatingActionButton)?.visibility =
-            View.GONE
-
         val recyclerView = binding.rvRickAndMorty
         recyclerView.layoutManager = GridLayoutManager(requireContext(),4)
 
